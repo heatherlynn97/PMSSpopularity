@@ -1,0 +1,38 @@
+---
+title: "top cities"
+author: "Heather MacDougall"
+date: "12/5/2017"
+output: html_document
+---
+```{r}
+library(tidyverse)
+library(highcharter)
+```
+
+
+## Top Cities
+```{r}
+
+ssTopCities <- read_csv("~/Downloads/SS_topcities.csv")
+pmTopCities <- read_csv("~/Downloads/PM_topcities.csv")
+```
+
+```{r}
+SamSmithCities <-
+hchart(ssTopCities, "column", hcaes(x = TopCity, y = Listeners, color = Country))%>%
+  hc_add_theme(hc_theme_flat()) %>%
+  hc_title(text = 'Top 5 Sam Smith Listening Cities', style = list(fontSize = "20px")) 
+
+SamSmithCities
+```
+
+```{r}
+PostMCities <-
+hchart(pmTopCities, "column", hcaes(x = TopCity, y = Listeners, color = Country)) %>%
+  hc_add_theme(hc_theme_flat()) %>%
+  hc_title(text = 'Top 5 Post Malone Listening Cities', style = list(fontSize = "20px"))
+
+PostMCities
+```
+
+
